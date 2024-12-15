@@ -1,0 +1,137 @@
+
+nav{
+  background-color: #333;
+  padding:  1vh;
+  text-align:center;
+}
+nav a{
+  color:#ffffff;
+  text-decoration:none;
+  margin: 0 1rem;
+}
+.nav-link {
+  padding: 1px; 
+  margin-right: 0px; 
+}
+
+
+
+@media (max-width: 296px) {
+  nav a {
+    margin: 0 0.5rem; /* Margin สำหรับหน้าจอเล็ก */
+  }
+}
+@media (min-width:297px) and (max-width: 345px) {
+  nav a {
+    margin: 0 1rem; /* Margin สำหรับหน้าจอขนาดกลาง */
+  }
+}
+
+@media (min-width:345px) and (max-width: 380px) {
+  nav a {
+    margin: 0 1.2rem; /* Margin สำหรับหน้าจอขนาดกลาง */
+  }
+}
+@media (min-width: 381px) and (max-width: 452px) {
+  nav a {
+    margin: 0 1.3rem; /* Margin สำหรับหน้าจอขนาดกลาง */
+  }
+}
+@media (min-width: 452px) and (max-width: 477px) {
+  nav a {
+    margin: 0 1 rem; /* Margin สำหรับหน้าจอขนาดกลาง */
+  }
+}
+
+@media (min-width: 477px) and (max-width: 620px) {
+  nav a {
+    margin: 0 2rem; /* Margin สำหรับหน้าจอขนาดกลาง */
+  }
+}
+
+/* สำหรับหน้าจอระหว่าง 620px ถึง 1024px */
+@media (min-width: 620px) and (max-width: 625px) {
+  nav a {
+    margin: 0 2.2rem; /* Margin สำหรับหน้าจอขนาดกลาง */
+  }
+}
+
+@media (min-width: 625px) and (max-width: 787px) {
+  nav a {
+    margin: 0 2.5rem; /* Margin สำหรับหน้าจอขนาดกลาง */
+  }
+}
+@media (min-width: 787px) and (max-width: 870px) {
+  nav a {
+    margin: 0 3.5rem; /* Margin สำหรับหน้าจอขนาดกลาง */
+  }
+
+}@media (min-width: 870px) and (max-width: 954px) {
+  nav a {
+    margin: 0 4rem; /* Margin สำหรับหน้าจอขนาดกลาง */
+  }
+}
+
+/* สำหรับหน้าจอระหว่าง 954px ถึง 1121px */
+@media (min-width: 954px) and (max-width: 1004px) {
+  nav a {
+    margin: 0 4.5rem; /* Margin สำหรับหน้าจอขนาดกลาง */
+  }
+}
+
+@media (min-width: 1004px) and (max-width: 1136px) {
+  nav a {
+    margin: 0 5rem; /* Margin สำหรับหน้าจอขนาดกลาง */
+  }
+}
+@media (min-width: 1136px) and (max-width: 1171px) {
+  nav a {
+    margin: 0 5.5rem; /* Margin สำหรับหน้าจอขนาดกลาง */
+  }
+}
+@media (min-width: 1171px) and (max-width: 1205px) {
+  nav a {
+    margin: 0 6.1rem; /* Margin สำหรับหน้าจอขนาดกลาง */
+  }
+}
+@media (min-width: 1205px) and (max-width: 1260px) {
+  nav a {
+    margin: 0 6.3rem; /* Margin สำหรับหน้าจอขนาดกลาง */
+  }
+}
+@media (min-width: 1260px) and (max-width: 1500px) {
+  nav a {
+    margin: 0 6.7rem; /* Margin สำหรับหน้าจอขนาดกลาง */
+  }
+}
+
+/* สำหรับ Desktop PC (ขนาดหน้าจอ 1024px ขึ้นไป) */
+@media (min-width: 1501px) {
+  nav a {
+    margin: 0 6.7rem; /* Margin สำหรับหน้าจอใหญ่ */
+  }
+}
+
+.result{
+  padding:0px 5%;
+  max-height:70vh;
+  overflow-y:scroll;
+}
+.result::-webkit-scrollbar{
+  display:none;
+}
+.result-title{
+  margin:40px 0px;
+  align-items: center;
+  gap:50px;
+}
+.result-data{
+  align-items: start;
+  gap:20px;
+}
+
+.text-gradient {
+  background: -webkit-linear-gradient(315deg,#7695FF 23%,#FF9874 85%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

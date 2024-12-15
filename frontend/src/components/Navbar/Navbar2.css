@@ -1,0 +1,232 @@
+
+
+.navbar .search-bar{
+    margin-top: 0px;
+    margin-bottom: 0px;
+   
+}
+
+.navbar .signin{
+    width: 50%;
+}
+@media (max-width: 296px) {
+    .navbar .search-bar .text {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+        border-radius: 0px;
+        background-color: #ababab;
+       
+    }
+    .navbar .logo{
+   
+        font-size: 18px;
+       
+       
+    }
+    .navbar .search-bar button{
+        font-size: 15px;
+        width: 100%;
+        background-color: black;
+        color: white;
+        border-radius: 2px;
+    }
+  }
+  @media (min-width:297px) and (max-width: 345px) {
+    .navbar .search-bar .text {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+        border-radius: 0px;
+        background-color: #ababab;
+       
+    }
+    .navbar .logo{
+   
+        font-size: 18px;
+      
+       
+       
+    }
+    .navbar .search-bar button{
+        font-size: 15px;
+        width: 100%;
+        background-color: black;
+        color: white;
+        border-radius: 2px;
+    }
+  }
+ 
+  @media (min-width:345px) and (max-width: 380px) {
+   .navbar .search-bar .text  {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 0px;
+    background-color: #ababab;
+    }
+    .navbar .logo{
+   
+        font-size: 18px;
+       
+       
+    }
+    .navbar .search-bar button{
+        font-size: 15px;
+        width: 100%;
+        background-color: black;
+        color: white;
+        border-radius: 2px;
+    }
+  }
+  @media (min-width: 381px) and (max-width: 452px) {
+   .navbar .search-bar .text  {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 0px;
+    background-color: #ababab;
+    }
+    .navbar .logo{
+   
+        font-size: 18px;
+       
+       
+    }
+    .navbar .search-bar button{
+        font-size: 15px;
+        width: 100%;
+        background-color: black;
+        color: white;
+        border-radius: 2px;
+    }
+  }
+  @media (min-width: 452px) and (max-width: 477px) {
+   .navbar .search-bar .text  {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 0px;
+    background-color: #ababab;
+    }
+    .navbar .logo{
+   
+        font-size: 18px;
+       
+       
+    }
+    .navbar .search-bar button{
+        font-size: 15px;
+        width: 100%;
+        background-color: black;
+        color: white;
+        border-radius: 2px;
+    }
+  }
+ 
+  @media (min-width: 477px) and (max-width: 576px) {
+   .navbar .search-bar .text  {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 0px;
+    background-color: #ababab;
+    }
+    .navbar .logo{
+   
+        font-size: 18px;
+       
+       
+    }
+    .navbar .search-bar button{
+        font-size: 15px;
+        width: 100%;
+        background-color: black;
+        color: white;
+        border-radius: 2px;
+    }
+  }@media (min-width: 576px) and (max-width: 620px) {
+    .navbar .search-bar .text  {
+     width: 100%;
+     padding: 10px;
+   
+     box-sizing: border-box;
+     border-radius: 0px;
+     background-color: #ababab;
+     }
+     .navbar .logo{
+    
+         font-size: 19px;
+        
+        
+     }
+     .navbar .search-bar button{
+         font-size: 15px;
+         width: 100%;
+         background-color: black;
+         color: white;
+         border-radius: 2px;
+     }
+   }
+
+@media (min-width: 620px) and (max-width: 769px) {
+    .navbar .search-bar .text  {
+     width: 100%;
+     padding: 10px;
+   
+     box-sizing: border-box;
+     border-radius: 0px;
+     background-color: #ababab;
+     }
+     .navbar .logo{
+    
+         font-size: 19px;
+        
+        
+     }
+     .navbar .search-bar button{
+         font-size: 15px;
+         width: 100%;
+         background-color: black;
+         color: white;
+         border-radius: 2px;
+     }
+   }
+ 
+@media (min-width: 769px) {
+   .navbar .search-bar .text  {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 0px;
+    background-color: #ababab;
+    }
+    .navbar .logo{
+   
+        font-size: 20px;
+       
+       
+    }
+    .navbar .search-bar button{
+        font-size: 15px;
+        width: 100%;
+        background-color: black;
+        color: white;
+        border-radius: 2px;
+    }
+  }
+
+  .search-bar.fix-top {
+    position: fixed ;
+    top: 0;
+    width: 90%;
+    z-index: 100;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    
+  }
+  
+
+
+ 

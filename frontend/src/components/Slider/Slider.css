@@ -1,0 +1,43 @@
+.slider{
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+
+/* src/components/Slider.css */
+.carousel-image-1 {
+    background-image: url('/src/images/LandPreparation1.png');
+    background-size: cover;
+    background-position: center;
+    height: 350px ;
+  }
+  
+  .carousel-image-2 {
+    background-image: url('/src/images/Planting2.png');
+    background-size: cover;
+    background-position: center;
+    height: 350px;
+  }
+  
+  .carousel-image-3 {
+    background-image: url('/src/images/Harvesting1.png');
+    background-size: cover;
+    background-position: center;
+    height: 350px;
+  }
+  
+  .dark-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  .text-gradient {
+    background: -webkit-linear-gradient(315deg,#7695FF 23%,#FF9874 85%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+

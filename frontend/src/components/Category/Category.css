@@ -1,0 +1,108 @@
+/* Justify Border Title
+-----------------------------------------------------------------*/
+.fancy-title {
+  --cnvs-fancy-title-padding: 0.9rem;
+  --cnvs-fancy-title-border-size: 2px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  margin-right: 1.5rem;
+  margin-left: 1.5rem;
+  
+  /* ตั้งค่าไล่ระดับสี */
+  background: -webkit-linear-gradient(315deg, #7695FF 23%, #FF9874 85%);
+
+
+}
+
+
+.fancy-title::before, .fancy-title::after {
+  content: "";
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+  height: 0;
+  margin-right: 1.5rem;
+  margin-left: 1.5rem;
+  color: #ffff;
+  border-top: calc(var(--cnvs-fancy-title-border-size) * 3) double rgba(var(--cnvs-contrast-rgb), 0.1);
+}
+.fancy-title::before {
+  display: none;
+  margin-right: var(--cnvs-fancy-title-padding);
+}
+.fancy-title::after {
+  margin-left: var(--cnvs-fancy-title-padding);
+}
+
+.title-border::before,
+.title-border::after {
+  border-top-width: var(--cnvs-fancy-title-border-size);
+  border-top-style: solid;
+}
+
+.title-border-color::before,
+.title-border-color::after {
+  border-top: var(--cnvs-fancy-title-border-size) solid var(--cnvs-themecolor);
+}
+
+/* Fancy Title - Center Align
+-----------------------------------------------------------------*/
+.title-center::before {
+  display: block;
+}
+
+/* Fancy Title - Right Align
+-----------------------------------------------------------------*/
+.title-right::before {
+  display: block;
+}
+.title-right::after {
+  display: none;
+}
+
+
+.text-gradient {
+  background: -webkit-linear-gradient(315deg,#7695FF 23%,#FF9874 85%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (max-width: 368px) {
+  .container {
+    flex: 0 0 auto;
+    width:100%;
+}
+}
+
+@media (min-width: 369px) and (max-width: 453px) {
+  .col-md-4 {
+    flex: 0 0 auto;
+    width: 100%;
+}
+}
+
+@media (min-width: 453px) and (max-width: 620px) {
+  .col-md-4 {
+    flex: 0 0 auto;
+    width: 100%;
+}
+}
+
+/* สำหรับหน้าจอระหว่าง 620px ถึง 1024px */
+@media (min-width: 620px) and (max-width: 767px) {
+  .col-md-4 {
+    flex:  0 0 auto;
+    width: 33%;
+}
+}
+@media (min-width: 768px) {
+  .col-md-4 {
+    flex: 0 0 auto;
+    width: 33.33333333%;
+}
+}
+section{
+  max-height: auto;
+}

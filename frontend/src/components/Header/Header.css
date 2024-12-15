@@ -1,0 +1,13 @@
+.header{
+    height:30vw;
+    margin: 30px auto;
+    background: url('/header_img.png') no-repeat;
+    background-size: 100%;
+    position: relative;
+}
+.header-contents{
+     gap: 1.5vw;
+    max-width: 100%;
+    bottom: 10%;
+    left: 6vw;
+}

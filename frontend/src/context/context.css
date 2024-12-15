@@ -1,0 +1,28 @@
+b{
+  
+    background: -webkit-linear-gradient(16deg,#4a6ad0 25%,#955e49  );
+    /* Clips the background to the shape of the text */
+    -webkit-background-clip: text;
+    /* Makes the text color transparent to show the background gradient */
+    -webkit-text-fill-color: transparent;
+}
+code {
+    
+    color: #f18435; /* สีข้อความ */
+}
+
+pre {
+    color: #201c1c; /* สีข้อความทั่วไป (text ธรรมดา) */
+    display: block;
+    white-space: pre-wrap;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    
+}
+a{
+    color: #f18435; 
+}
+
+
