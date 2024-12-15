@@ -72,34 +72,100 @@ const verifyOrder = async (req, res) => {
         res.json({ success: false, message: "Error" });
     }
 }
-const userOrders = async (req,res) => {
-	try{
-		const orders = await orderModel.find({userId:req.body.userId});
-		res.json({success:true,data:orders})
-	} catch (error){
-		console.log(error);
-		res.json({success:false,message:"Error"})
-	}
+const userOrders = async (req, res) => {
+    try {
+        const userId = req.body.userId;
+        const orders = await orderModel.find({ userId: userId });
+        
+        res.json({
+            success: true,
+            data: orders
+        });
+    } catch (error) {
+        res.json({
+            success: false,
+            message: "Error fetching orders"
+        });
+    }
 }
 //Listing orders for admin panel
-const listOrders = async (req,res)=>{
-	try {
-        const orders = await orderModel.find({});
-        res.json({ success: true, data: orders });
+const listOrders = async (req, res) => {
+    try {
+        const orders = await orderModel.find().sort({ createdAt: -1 });
+        res.json({
+            success: true,
+            data: orders
+        });
     } catch (error) {
-        console.log(error);
-        res.json({ success: false, message: "Error" });
+        console.error("List orders error:", error);
+        res.json({
+            success: false,
+            message: "Error fetching orders"
+        });
     }
 }
 // api for updating order status
-const updateStatus = async (req, res) => {
-	try{
-		await orderModel.findByIdAndUpdate(req.body.orderId,{status:req.body.status});
-		res.json({success:true,message:"Status Updated"})
-	} catch (error){
-		console.log(error);
-		res.json({success:false,message:"Error"})
-	}
+const updateOrderStatus = async (req, res) => {
+    try {
+        const { orderId, status } = req.body;
+        
+        const order = await orderModel.findById(orderId);
+        if (!order) {
+            return res.json({
+                success: false,
+                message: "Order not found"
+            });
+        }
+
+        await orderModel.findByIdAndUpdate(orderId, { status });
+        
+        res.json({
+            success: true,
+            message: "Order status updated"
+        });
+    } catch (error) {
+        console.error("Update order status error:", error);
+        res.json({
+            success: false,
+            message: "Error updating order status"
+        });
+    }
 }
 
-export {placeOrder,verifyOrder,userOrders,listOrders,updateStatus}
+const deleteOrder = async (req, res) => {
+    try {
+        const orderId = req.params.orderId;
+        
+        // ตรวจสอบว่ามีออเดอร์นี้หรือไม่
+        const order = await orderModel.findById(orderId);
+        if (!order) {
+            return res.json({
+                success: false,
+                message: "Order not found"
+            });
+        }
+
+        // ลบออเดอร์
+        await orderModel.findByIdAndDelete(orderId);
+        
+        res.json({
+            success: true,
+            message: "Order deleted successfully"
+        });
+    } catch (error) {
+        console.error("Delete order error:", error);
+        res.json({
+            success: false,
+            message: "Error deleting order"
+        });
+    }
+};
+
+export {
+    placeOrder,
+    verifyOrder,
+    userOrders,
+    listOrders,
+    updateOrderStatus,
+    deleteOrder
+}

@@ -1,33 +1,119 @@
-.sidebar{
-    width: 18%;
-    min-height: 100vh;
-    border: 1.5px solid #a9a9a9;
-    border-top: 0;
-    font-size: max(1vw, 10px);
+.sidebar {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #f0f4f9;
+    padding: 25px 15px;
+    width: 250px;
 }
-.sidebar-options{
-    padding-top: 50px;
-    padding-left: 20%;
+
+.sidebar-options {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
-.sidebar-option{
+
+.sidebar-option {
     display: flex;
     align-items: center;
     gap: 12px;
-    border: 2px solid #a9a9a9;
-    border-right: 0;
-    padding: 8px 10px;
-    border-radius: 3px 0px 0px 3px;
-    cursor: pointer;
+    color: #333;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
 }
-.sidebar-option.active{
-    background-color: #FFD7C4;
-    border-color: #FF9874;
+
+.sidebar-option img {
+    width: 24px;
+    height: 24px;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
 }
-@media (max-width: 900px){
-    .sidebar-option p{
+
+.sidebar-option p {
+    font-size: 14px;
+    margin: 0;
+}
+
+.sidebar-option:hover {
+    background-color: #e6eaf0;
+}
+
+.sidebar-option:hover img {
+    opacity: 1;
+}
+
+.sidebar-option.active {
+    background: linear-gradient(135deg, #7695FF 0%, #9DBDFF 100%);
+    color: white;
+}
+
+.sidebar-option.active img {
+    opacity: 1;
+    filter: brightness(0) invert(1);
+}
+
+@media (max-width: 750px) {
+    .sidebar {
+        min-height: auto;
+        width: 48px;
+        padding: 15px 5px;
+    }
+
+    .sidebar-options {
+        gap: 10px;
+    }
+
+    .sidebar-option {
+        padding: 8px;
+        justify-content: center;
+    }
+
+    .sidebar-option img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .sidebar-option p {
         display: none;
+    }
+
+    .sidebar-option {
+        position: relative;
+    }
+
+    .sidebar-option:hover::after {
+        content: attr(title);
+        position: absolute;
+        left: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        white-space: nowrap;
+        z-index: 1000;
+        margin-left: 10px;
+    }
+}
+
+.app-content {
+    display: flex;
+    min-height: 100vh;
+}
+
+@media (max-width: 750px) {
+    .app-content {
+        flex-direction: row;
+    }
+
+    .app-content > *:not(.sidebar) {
+        flex: 1;
+        margin-left: 10px;
+        width: calc(100% - 80px);
     }
 }

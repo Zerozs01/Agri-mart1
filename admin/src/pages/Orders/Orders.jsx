@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { assets } from '../../assets/assets';
@@ -20,6 +20,22 @@ const Orders = ({ url }) => {
         const response = await axios.post(url + "/api/order/status", { orderId, status: event.target.value });
         if (response.data.success) {
             await fetchAllOrders();
+        }
+    }
+
+    const deleteOrder = async (orderId) => {
+        if (window.confirm('คุณแน่ใจหรือไม่ที่จะลบออเดอร์นี้?')) {
+            try {
+                const response = await axios.delete(`${url}/api/order/delete/${orderId}`);
+                if (response.data.success) {
+                    toast.success('ลบออเดอร์สำเร็จ');
+                    await fetchAllOrders();
+                } else {
+                    toast.error('เกิดข้อผิดพลาดในการลบออเดอร์');
+                }
+            } catch (error) {
+                toast.error('เกิดข้อผิดพลาดในการลบออเดอร์');
+            }
         }
     }
 
@@ -58,13 +74,21 @@ const Orders = ({ url }) => {
                             <option value="Out for delivery">Out for delivery</option>
                             <option value="Delivered">Delivered</option>
                         </select>
-                      
-                       
+                        <button 
+                            onClick={() => deleteOrder(order._id)}
+                            className="delete-btn"
+                           
+                        >
+                            delete order
+                        </button>
+                        
                     </div>
+                  
                   
                 ))}
               
             </div>
+            
         </div>
     )
 }

@@ -7,6 +7,10 @@ const Cart0 = () => {
   const { cartItems, food_list, removeFromCart,getTotalCartAmount ,url} = useContext(StoreContext);
  const navigate = useNavigate();
  
+  if (!food_list || !cartItems) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="cart ">
       <div className="cart-items">

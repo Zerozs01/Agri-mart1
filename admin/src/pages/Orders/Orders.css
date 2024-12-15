@@ -1,76 +1,164 @@
-.order-items{
-	
+.order {
+	margin: 50px 50px;
+	margin-bottom: 50px;
+}
+
+.order .container {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.order-items {
 	display: grid;
-	grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr;
-	align-items: start;
+	grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr 2fr 1fr;
+	align-items: center;
 	gap: 30px;
-	border: 1px solid #7695FF;
-	padding: 20px;
-	margin: 30px 0px;
 	font-size: 14px;
-	color: #505050;
-}
-	
-
-.order-item-food, .order-item-name{
-	font-weight: 600;
-	
-	
+	padding: 10px 20px;
+	color: #000000;
+	border: 2px solid #150707;
 }
 
-.order-item-name{
-	margin-top: 30px;
-	margin-bottom: 5px;
+.order-items img {
+	width: 50px;
 }
 
-.order-item-address{
-	margin-bottom: 10px;
+.order-items p span {
+	color: #7695FF;
 }
 
-.order-items select{
-	
-	background-color: #FFD7C4;
-	border: 1px solid #7695FF;
-	width: max(10vw, 120px);
-	padding: 10px;
-	outline: none;
-	
+.order-items p b {
+	font-weight: 500;
+	color: #ffffff;
 }
 
-@media (max-width: 1000px){
-	.order-item{
-		font-size: 12px;
-		grid-template-columns: 0.5fr 2fr 1fr;
-		padding: 15px 8px;
-	}
-	.order-item select{
-		padding: 5px;
-		font-size: 12px;
-	}
-	.order-item img{
-		width: 40px;
-	}
+.order-items .status {
+	color: #ffffff;
 }
+
+.order-items select {
+	border: none;
+	padding: 12px 0px;
+	border-radius: 4px;
+	background-color: #9DBDFF;
+	cursor: pointer;
+	color: #ffffff;
+}
+
+/* เพิ่ม Media Queries สำหรับหน้าจอขนาดเล็ก */
 @media (max-width: 750px) {
+	.order {
+		margin: 10px 8px;
+		
+	}
+
+	.order .container {
+		gap: 15px;
+	}
+
 	.order-items {
-		grid-template-columns: 1fr; /* แสดงรายการในแนวตั้ง */
-		font-size: 10px; /* ลดขนาดฟอนต์ */
-		padding: 10px 5px;
-		gap: 15px; /* ลดช่องว่างระหว่างรายการ */
+		grid-template-columns: 1fr;
+		gap: 15px;
+		padding: 15px;
+		font-size: 13px;
 	}
-	.order-item-name {
-		margin-top: 15px;
-		margin-bottom: 3px;
+
+	/* จัดการแต่ละส่วนให้แสดงในแนวตั้ง */
+	.order-items > * {
+		width: 100%;
 	}
-	.order-item-address {
-		margin-bottom: 8px;
-	}
-	.order-items select {
-		width: 100%; /* ใช้พื้นที่เต็ม */
-		padding: 5px;
-		font-size: 10px; /* ลดขนาดฟอนต์ */
-	}
+
 	.order-items img {
-		width: 30px; /* ลดขนาดรูปภาพ */
+		width: 40px;
+		margin: 0 auto;
 	}
+
+	/* จัดการข้อความรายการอาหาร */
+	.order-item-food {
+		text-align: center;
+		margin: 10px 0;
+	}
+
+	/* จัดการข้อมูลที่อยู่ */
+	.order-item-address {
+		text-align: center;
+		margin: 5px 0;
+	}
+
+	/* จัดการข้อมูลการติดต่อ */
+	.order-item-phone {
+		text-align: center;
+		padding: 5px 0;
+		font-size: 13px;
+		color: #000000;
+		background-color: rgba(255, 255, 255, 0.1);
+		border-radius: 4px;
+		margin: 8px 0;
+	}
+
+	/* ปรับ select ให้เต็มความกว้าง */
+	.order-items select {
+		width: 100%;
+		padding: 10px;
+		margin: 5px 0;
+		text-align: center;
+	}
+
+	/* เพิ่ม grid areas สำหรับจัดเรียงข้อมูล */
+	.order-items {
+		display: grid;
+		grid-template-areas:
+			"image"
+			"food"
+			"name"
+			"address"
+			"phone"
+			"items"
+			"amount"
+			"status";
+		text-align: center;
+	}
+
+	.order-items img { grid-area: image; }
+	.order-item-food { grid-area: food; }
+	.order-item-name { grid-area: name; }
+	.order-item-address { grid-area: address; }
+	.order-item-phone { grid-area: phone; }
+	.order-items p:nth-of-type(1) { grid-area: items; }
+	.order-items p:nth-of-type(2) { grid-area: amount; }
+	.order-items select { grid-area: status; }
+
+	/* เพิ่ม border เพื่อแบ่งส่วน */
+	.order-items > *:not(:last-child) {
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+		padding-bottom: 10px;
+	}
+
+	/* ปรับขนาดตัวอักษร */
+	.order-items p {
+		font-size: 13px;
+		margin: 5px 0;
+	}
+
+	/* ปรับสีพื้นหลังให้เข้มขึ้นเล็กน้อย */
+	.order-items {
+		background-color: rgba(0, 0, 0, 0.1);
+	}
+}
+
+/* เพิ่ม animation เมื่อโหลดข้อมูล */
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.order-items {
+	animation: fadeIn 0.3s ease-out;
 }

@@ -8,25 +8,18 @@ import FoodDisplay from './components/FoodDisplay/FoodDisplay';
 import ExploreMenu from './components/ExploreMenu/ExploreMenu';
 import FreeSpace from './components/FreeSpace/FreeSpace';
 
-
-
-
-
-
 function App() {
-
   const [category,setCategory] = useState("All");
   const [showLogin,setShowLogin] = useState(false)
   return (
     <>
-
-    {showLogin?<LoginPopup setShowLogin={setShowLogin}/>:<></>}
-    <Navbar2/>
-   <Slider/>
-  <ExploreMenu category={category} setCategory={setCategory}/>
-   <FoodDisplay category={category}/>
-   <FreeSpace />
-   <Footer setShowLogin={setShowLogin}/>
+      {showLogin?<LoginPopup setShowLogin={setShowLogin}/>:<></>}
+      <Navbar2/>
+      <Slider/>
+      <ExploreMenu category={category} setCategory={setCategory}/>
+      <FoodDisplay category={category}/>
+      <FreeSpace />
+      <Footer setShowLogin={setShowLogin}/>
     </>
   );
 }

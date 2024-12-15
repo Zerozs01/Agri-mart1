@@ -83,3 +83,17 @@
 		padding: 10px 0px;
 	}
 }
+
+.track-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.track-btn:hover {
+    background-color: #45a049;
+}

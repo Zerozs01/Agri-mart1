@@ -71,4 +71,61 @@ const registerUser = async (req, res) => {
     }
 };
 
-export { loginUser, registerUser };
+// ดึงรายชื่อผู้ใช้ทั้งหมด
+const listUsers = async (req, res) => {
+    try {
+        const users = await userModel.find({}, { password: 0 });
+        res.json({ success: true, data: users });
+    } catch (error) {
+        res.json({ success: false, message: error.message });
+    }
+};
+
+// สร้างผู้ใช้ใหม่
+const createUser = async (req, res) => {
+    try {
+        const { username, email, password, role } = req.body;
+        
+        // เช็คว่ามี email ซ้ำไหม
+        const existingUser = await userModel.findOne({ email });
+        if (existingUser) {
+            return res.json({ success: false, message: 'อีเมลนี้ถูกใช้งานแล้ว' });
+        }
+
+        // เข้ารหัสพาสเวิร์ด
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        // สร้างผู้ใช้ใหม่
+        const newUser = new userModel({
+            username,
+            email,
+            password: hashedPassword,
+            role
+        });
+
+        await newUser.save();
+        res.json({ success: true, message: 'สร้างผู้ใช้สำเร็จ' });
+    } catch (error) {
+        res.json({ success: false, message: error.message });
+    }
+};
+
+// ลบผู้ใช้
+const deleteUser = async (req, res) => {
+    try {
+        const { userId } = req.params;
+        await userModel.findByIdAndDelete(userId);
+        res.json({ success: true, message: 'ลบผู้ใช้สำเร็จ' });
+    } catch (error) {
+        res.json({ success: false, message: error.message });
+    }
+};
+
+// รวม export ทั้งหมดไว้ที่เดียว
+export {
+    loginUser,
+    registerUser,
+    listUsers,
+    createUser,
+    deleteUser
+};
