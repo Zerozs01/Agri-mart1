@@ -1,0 +1,13 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 4%;
+    background: linear-gradient(135deg, #7695FF 5%, #FF9874 75%);
+    text-align: center;
+}
+.navbar .logo{
+    font-size: 25px;
+    color: azure;
+   
+}
