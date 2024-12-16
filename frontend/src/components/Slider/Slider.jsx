@@ -36,9 +36,9 @@ const Slider = () => {
                 <div className="carousel-caption d-none d-sm-block">
                   <h1 className="display-3 ">LandPreparation</h1>
                   <p>
-                  อุปกรณ์สำหรับการเตรียมและปรับสภาพพื้นที่ 
+                  
                     <br />
-                    ปรับปรุงคุณภาพดินเพื่อให้เหมาะสมกับการปลูกพืช 
+                 
                   </p>
                 </div>
               </div>

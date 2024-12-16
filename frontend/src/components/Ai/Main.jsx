@@ -41,7 +41,7 @@ function Main() {
                     className="search-input  fs-1 fw-light px-5 "
                   />
                   <button
-                    className="btn btn-logo  px-4 fw-bolder search-button   "
+                    className=" px-4 fw-bolder search-button text-align  "
                     onClick={() => onSent()}
                   >
                     search

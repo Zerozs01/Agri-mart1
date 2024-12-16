@@ -1,12 +1,8 @@
 
 import React, { useState } from "react";
 import Navbar2 from "../components/Navbar/Navbar2";
-
-import TabMenu from "./Cart/TabMenu";
-import CartSection from "./Cart/CartSection";
-import OrderStatus from "./Cart/OrderStatus";
 import Footer from "../components/Footer/Footer";
-import CartHeader from "./Cart/CartHeader";
+
 import LoginPopup from "../Login/LoginPopup";
 function Cart() {
   // ใช้ useState เพื่อควบคุม tab ที่แสดง
@@ -20,7 +16,7 @@ function Cart() {
   return (
     <div>
       {showLogin?<LoginPopup setShowLogin={setShowLogin}/>:<></>}
-      <CartHeader/>
+   
       
       {/* ส่งฟังก์ชัน handleTabChange ไปที่ TabMenu */}
       <TabMenu onTabChange={handleTabChange} />
