@@ -7,7 +7,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 
 import Account from "./pages/Account";
-import Cart from "./pages/Cart.jsx";
 import ContextProvider from "./context/context";
 import Category0 from "./pages/Category0.jsx";
 import Chat from "./pages/Chat.jsx";
@@ -16,6 +15,7 @@ import StoreContextProvider from "./context/StoreContext.jsx";
 import PlaceOrder from "./pages/PlaceOrder/PlaceOrder.jsx";
 import Verify from "./pages/Verify/Verify.jsx";
 import MyOrders from "./pages/MyOrders/MyOrders.jsx";
+import Cart0 from "./pages/Cart0/Cart0.jsx";
 
 
 // Define your routes
@@ -30,7 +30,7 @@ const router = createBrowserRouter([
   },
   {
     path: "cart",
-    element: <Cart />,
+    element: <Cart0 />,
   },
   {
     path: "Account",

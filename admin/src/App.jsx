@@ -11,7 +11,7 @@ import SettingUser from './pages/User/settingUser';
 
 const App = () => {
 
-  const url = 'http://localhost:4000'
+  const url = 'https://agri-mart1-backend.onrender.com'
 
   return (
     <div>
