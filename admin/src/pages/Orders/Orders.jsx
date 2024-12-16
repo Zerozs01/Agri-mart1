@@ -28,7 +28,7 @@ const Orders = ({ url }) => {
             try {
                 const response = await axios.delete(`${url}/api/order/delete/${orderId}`);
                 if (response.data.success) {
-                    toast.success('ลบออเดอร์สำเร็จ');
+                    toast.success('ล���ออเดอร์สำเร็จ');
                     await fetchAllOrders();
                 } else {
                     toast.error('เกิดข้อผิดพลาดในการลบออเดอร์');
@@ -51,7 +51,7 @@ const Orders = ({ url }) => {
                     <div key={index} className='order-items border'>
                         <img src={assets.parcel_icon} alt="" />
                         <div>
-                            <p className='order-item-food '>
+                            <p className='order-item-food'>
                                 {order.items.map((item, index) => {
                                     if (index === order.items.length - 1) {
                                         return item.name + " x " + item.quantity;
@@ -77,18 +77,20 @@ const Orders = ({ url }) => {
                         <button 
                             onClick={() => deleteOrder(order._id)}
                             className="delete-btn"
-                           
                         >
                             delete order
                         </button>
-                        
+                        <div className="detail-item">
+                            <span>วันที่สั่งซื้อ:</span>
+                            <span>
+                                {new Date(order.date).toLocaleString('th-TH', {
+                                    timeZone: 'Asia/Bangkok'
+                                })}
+                            </span>
+                        </div>
                     </div>
-                  
-                  
                 ))}
-              
             </div>
-            
         </div>
     )
 }
