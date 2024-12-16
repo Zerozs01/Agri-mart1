@@ -10,7 +10,7 @@ const OrderTrackingModal = ({ order, onClose }) => {
                     <h2>ติดตามออเดอร์</h2>
                     <button className="close-btn" onClick={onClose}>&times;</button>
                 </div>
-                
+
                 <div className="tracking-modal-content">
                     <div className="order-status">
                         <div className="status-timeline">
@@ -30,14 +30,21 @@ const OrderTrackingModal = ({ order, onClose }) => {
                     </div>
 
                     <div className="order-details">
-                        <h3>รายละเอียดออเดอร์</h3>
+                        <h3>Order Details</h3>
                         <div className="detail-item">
                             <span>เลขออเดอร์:</span>
                             <span>{order._id}</span>
                         </div>
                         <div className="detail-item">
                             <span>วันที่สั่งซื้อ:</span>
-                            <span>{new Date(order.createdAt).toLocaleString('th-TH')}</span>
+                            <span>
+                                {order.date ?
+                                    new Date(order.date).toLocaleString('th-TH', {
+                                        timeZone: 'Asia/Bangkok'
+                                    })
+                                    : 'ไม่พบข้อมูลวันที่'
+                                }
+                            </span>
                         </div>
                         <div className="detail-item">
                             <span>สถานะการชำระเงิน:</span>
@@ -50,8 +57,15 @@ const OrderTrackingModal = ({ order, onClose }) => {
                     <div className="delivery-details">
                         <h3>ข้อมูลการจัดส่ง</h3>
                         <div className="detail-item">
-                            <span>ที่อยู่:</span>
-                            <span>{order.address.street}, {order.address.city}</span>
+                            <span>วันที่สั่งซื้อ:</span>
+                            <span>
+                                {order.date ?
+                                    new Date(order.date).toLocaleString('th-TH', {
+                                        timeZone: 'Asia/Bangkok'
+                                    })
+                                    : 'ไม่พบข้อมูลวันที่'
+                                }
+                            </span>
                         </div>
                         <div className="detail-item">
                             <span>เบอร์โทร:</span>

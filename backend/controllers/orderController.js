@@ -75,7 +75,9 @@ const verifyOrder = async (req, res) => {
 const userOrders = async (req, res) => {
     try {
         const userId = req.body.userId;
-        const orders = await orderModel.find({ userId: userId });
+        const orders = await orderModel.find({ userId: userId })
+                                     .select('userId items amount address status payment date')
+                                     .sort({ date: -1 });
         
         res.json({
             success: true,
