@@ -1,101 +1,60 @@
-import userModel from '../models/userModel.js';
+// เพิ่ม import ถ้ายังไม่มี
+import foodModel from '../models/foodModel.js'; // หากต้องใช้ตรวจสอบ itemId
 
-// fetch user cart data
-const getCart = async (req, res) => {
+// เพิ่มฟังก์ชัน syncCart
+const syncCart = async (req, res) => {
     try {
         const userId = req.body.userId;
+        const localCartItems = req.body.cartItems || {};
+
+        // ค้นหา user
         let userData = await userModel.findById(userId);
+        if (!userData) {
+            return res.json({ success: false, message: "User not found" });
+        }
+
+        // ตรวจสอบ cartData หากยังไม่มี
+        if (!userData.cartData) {
+            userData.cartData = {};
+        }
+
+        // รวม cart items
+        const mergedCartItems = { ...userData.cartData };
         
-        if (!userData) {
-            return res.json({ success: false, message: "User not found" });
+        // ตรวจสอบและเพิ่ม items จาก local storage
+        for (const [itemId, quantity] of Object.entries(localCartItems)) {
+            // เพิ่มการตรวจสอบ itemId ว่ามีอยู่จริงหรือไม่ (เพิ่มความปลอดภัย)
+            const itemExists = await foodModel.findById(itemId);
+            if (itemExists) {
+                if (mergedCartItems[itemId]) {
+                    // หากมี item นี้อยู่แล้ว ให้เพิ่มจำนวน
+                    mergedCartItems[itemId] += quantity;
+                } else {
+                    // หากยังไม่มี item นี้ ให้เพิ่มใหม่
+                    mergedCartItems[itemId] = quantity;
+                }
+            }
         }
 
-        if (!userData.cartData) {
-            userData.cartData = {};
-        }
+        // อัปเดต cart ของ user
+        userData.cartData = mergedCartItems;
+        await userData.save();
 
-        res.json({ success: true, cartData: userData.cartData });
-
-    } catch (error) {
-        console.error("Error in getCart:", error);
-        res.json({ success: false, message: "Error fetching cart" });
-    }
-}
-
-// add items to user cart
-const addToCart = async (req, res) => {
-    try {
-        const userId = req.body.userId;
-        let userData = await userModel.findById(userId);
-
-        if (!userData) {
-            return res.json({ success: false, message: "User not found" });
-        }
-
-        if (!userData.cartData) {
-            userData.cartData = {};
-        }
-
-        const itemId = req.body.itemId;
-        if (!userData.cartData[itemId]) {
-            userData.cartData[itemId] = 1;
-        } else {
-            userData.cartData[itemId] += 1;
-        }
-
-        const updatedUser = await userModel.findByIdAndUpdate(
-            userId,
-            { cartData: userData.cartData },
-            { new: true }
-        );
-
-        res.json({ 
+        return res.json({ 
             success: true, 
-            message: "Item Added to Cart",
-            cartData: updatedUser.cartData 
+            message: "Cart synced successfully", 
+            cartData: mergedCartItems 
         });
 
     } catch (error) {
-        console.error("Error in addToCart:", error);
-        res.json({ success: false, message: "Error adding to cart" });
-    }
-}
-
-// remove items from user cart
-const removeFromCart = async (req, res) => {
-    try {
-        const userId = req.body.userId;
-        const itemId = req.body.itemId;
-
-        let userData = await userModel.findById(userId);
-        if (!userData) {
-            return res.json({ success: false, message: "User not found" });
-        }
-
-        if (!userData.cartData) {
-            userData.cartData = {};
-        }
-
-        if (userData.cartData[itemId] > 0) {
-            userData.cartData[itemId] -= 1;
-        }
-
-        const updatedUser = await userModel.findByIdAndUpdate(
-            userId,
-            { cartData: userData.cartData },
-            { new: true }
-        );
-
+        console.error("Error in syncCart:", error);
         res.json({ 
-            success: true, 
-            message: "Item removed from cart",
-            cartData: updatedUser.cartData 
+            success: false, 
+            message: "Error syncing cart",
+            error: error.message 
         });
-
-    } catch (error) {
-        console.error("Error in removeFromCart:", error);
-        res.json({ success: false, message: "Error removing from cart" });
     }
 }
 
-export { addToCart, removeFromCart, getCart };
+// เพิ่ม export
+export { addToCart, removeFromCart, getCart, syncCart };
