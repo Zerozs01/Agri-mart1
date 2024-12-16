@@ -10,7 +10,7 @@ const OrderTrackingModal = ({ order, onClose }) => {
                     <h2>ติดตามออเดอร์</h2>
                     <button className="close-btn" onClick={onClose}>&times;</button>
                 </div>
-
+                
                 <div className="tracking-modal-content">
                     <div className="order-status">
                         <div className="status-timeline">
@@ -37,14 +37,7 @@ const OrderTrackingModal = ({ order, onClose }) => {
                         </div>
                         <div className="detail-item">
                             <span>วันที่สั่งซื้อ:</span>
-                            <span>{new Date(order.date).toLocaleString('th-TH', {
-                                timeZone: 'Asia/Bangkok',
-                                year: 'numeric',
-                                month: 'long',
-                                day: 'numeric',
-                                hour: '2-digit',
-                                minute: '2-digit'
-                            })}</span>
+                            <span>{new Date(order.createdAt).toLocaleString('th-TH')}</span>
                         </div>
                         <div className="detail-item">
                             <span>สถานะการชำระเงิน:</span>

@@ -12,29 +12,32 @@ const StoreContextProvider = (props) => {
 
     const addToCart = async (itemId) => {
         try {
-            // เพิ่มสินค้าในตระกร้าก่อนเลย โดยไม่สนใจ token
+            if (!token) {
+                console.log("No token found");
+                return;
+            }
+
             setCartItems((prev) => ({
                 ...prev,
                 [itemId]: (prev[itemId] || 0) + 1
             }));
-    
-            // เก็บ cart items ใน localStorage เพื่อรักษาสถานะ
-            localStorage.setItem('cartItems', JSON.stringify({
-                ...cartItems,
-                [itemId]: (cartItems[itemId] || 0) + 1
-            }));
-    
-            // ถ้ามี token ค่อยส่ง request ไปที่ backend
-            if (token) {
-                const response = await axios.post(
-                    `${url}/api/cart/add`,
-                    { itemId },
-                    { headers: { token } }
-                );
-    
-                if (response.data.success) {
-                    setCartItems(response.data.cartData);
-                }
+
+            const response = await axios.post(
+                `${url}/api/cart/add`,
+                { itemId },
+                { headers: { token } }
+            );
+
+            console.log("Add to cart response:", response.data);
+
+            if (response.data.success) {
+                setCartItems(response.data.cartData);
+            } else {
+                console.log("Error:", response.data.message);
+                setCartItems((prev) => ({
+                    ...prev,
+                    [itemId]: (prev[itemId] || 0) - 1
+                }));
             }
         } catch (error) {
             console.error("Error adding to cart:", error);
@@ -87,24 +90,16 @@ const StoreContextProvider = (props) => {
 		}
 	}
 
-	// เพิ่มการโหลด cart items จาก localStorage เมื่อเริ่มแอป
-useEffect(() => {
-    async function loadData() {
-        await fetchFoodList();
-        
-        // โหลด cart items จาก localStorage
-        const savedCartItems = localStorage.getItem('cartItems');
-        if (savedCartItems) {
-            setCartItems(JSON.parse(savedCartItems));
-        }
-
-        if (localStorage.getItem('token')) {
-            setToken(localStorage.getItem("token"));
-            await loadCartData(localStorage.getItem("token"));
-        }
-    }
-    loadData();
-}, []);
+	useEffect(() => {
+		async function loadData(){
+			await fetchFoodList();
+			if(localStorage.getItem('token')){
+				setToken(localStorage.getItem("token"));
+				await loadCartData(localStorage.getItem("token"));
+			}
+		}
+		loadData();
+	},[]);
 
     const contextValue = {
         food_list,

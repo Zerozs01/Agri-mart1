@@ -1,77 +1,42 @@
-import React, { useContext, useState } from 'react'
-import { jwtDecode } from 'jwt-decode';
-import './LoginPopup.css' 
-import { StoreContext } from '../context/StoreContext' 
+import React , {useContext, useState} from 'react'
+import './LoginPopup.css'
+import { StoreContext } from '../context/StoreContext'
 import axios from "axios"
-
 function LoginPopup({setShowLogin}) {
-  const {url, setToken} = useContext(StoreContext)
-  const [currState, setCurrState] = useState("Login")
-  const [data, setData] = useState({
-    name: "",
-    email: "",
-    password: ""
-  })
 
-  const onChangeHandler = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    setData(data => ({...data, [name]: value}))
-  }
+const {url,setToken} = useContext(StoreContext)
 
-  const onLogin = async (event) => {
-    event.preventDefault();
-    let newUrl = url;
-    
-    if (currState === "Login") {
-        newUrl += "/api/user/login";
-    } else {
-        newUrl += "/api/user/register";
-    }
-    
-    try {
-        const response = await axios.post(newUrl, data);
-        
-        if (response.data.success) {
-            // decode token เพื่อดึง userId
-            const decodedToken = jwtDecode(response.data.token);
-            
-            setToken(response.data.token);
-            localStorage.setItem("token", response.data.token);
-            
-            // ดึงสินค้าในตะกร้าจาก localStorage
-            const localCartItems = JSON.parse(localStorage.getItem('cartItems') || '{}');
-            
-            if (Object.keys(localCartItems).length > 0) {
-                // ส่ง local cart items ไปยัง backend
-                const syncResponse = await axios.post(
-                    `${url}/api/cart/sync`,
-                    { 
-                        userId: decodedToken.id,  // เพิ่ม userId ในการส่งข้อมูล
-                        cartItems: localCartItems 
-                    },
-                    {
-                        headers: {
-                            token: response.data.token
-                        }
-                    }
-                );
-                
-                // อัปเดต localStorage กับข้อมูลตะกร้าล่าสุดจาก backend
-                if (syncResponse.data.success) {
-                    localStorage.setItem('cartItems', JSON.stringify(syncResponse.data.cartData));
-                }
-            }
-            
-            setShowLogin(false);
-        } else {
-            alert(response.data.message);
-        }
-    } catch (error) {
-        console.error("Login error:", error);
-        alert("เกิดข้อผิดพลาดในการเข้าสู่ระบบ");
-    }
-};
+const [currState,setCurrState] = useState("Login")
+ const[data,setData] = useState({
+  name:"",
+  email:"",
+  password:""
+ })
+ const onChangeHandler = (event) => {
+const name = event.target.name;
+const value = event.target.value;
+setData(data=>({...data,[name]:value}))
+}
+
+const onLogin = async (event)=>{
+ event.preventDefault()
+ let newUrl = url;
+ if(currState ==="Login"){
+  newUrl += "/api/user/login"
+ }
+ else{
+  newUrl += "/api/user/register"
+ }
+const response = await axios.post(newUrl,data);
+if(response.data.success){
+setToken(response.data.token);
+localStorage.setItem("token",response.data.token);
+setShowLogin(false)
+}
+else{
+  alert(response.data.message)
+}
+}
 
   return (
     <div className='login-popup text-light'>
