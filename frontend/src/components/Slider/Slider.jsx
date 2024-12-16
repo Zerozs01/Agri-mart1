@@ -34,7 +34,7 @@ const Slider = () => {
             <div className="container ">
               <div className="dark-overlay ">
                 <div className="carousel-caption d-none d-sm-block">
-                  <h1 className="display-3 ">LandPreparation</h1>
+                  <h1 className="display-3 "></h1>
                   <p>
                   
                     <br />
@@ -49,11 +49,11 @@ const Slider = () => {
             <div className="container">
               <div className="dark-overlay">
                 <div className="carousel-caption d-none d-sm-block">
-                  <h1 className="display-3">Planting and Crop Maintenance</h1>
+                  <h1 className="display-3"></h1>
                   <p>
-                  อุปกรณ์สำหรับการปลูกและดูแลพืช
+                
                     <br />
-                    ดูแลพืชให้เติบโตจนถึงเก็บเกี่ยว
+                   
                   </p>
                 </div>
               </div>
@@ -64,11 +64,11 @@ const Slider = () => {
             <div className="container">
               <div className="dark-overlay"></div>
               <div className="carousel-caption d-none d-sm-block">
-                <h1 className="display-3">Harvesting Management</h1>
+                <h1 className="display-3"></h1>
                 <p>
-                อุปกรณ์ที่ใช้ในการเก็บเกี่ยวผลผลิตและการจัดการหลังการเก็บเกี่ยว
+                
                   <br />
-                อาทิ การแปรรูปหรือการเก็บรักษาผลผลิตเพื่อรักษาคุณภาพ
+              
                 </p>
               </div>
             </div>
