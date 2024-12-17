@@ -8,18 +8,18 @@ import { assets } from "../../assets/frontend_assets/assets";
 
 
 function Footer({ setShowLogin }) {
-  const { token, setToken } = useContext(StoreContext);
+  const { token, logout } = useContext(StoreContext);
   const navigate = useNavigate();
-  const logout = () =>{
-    localStorage.removeItem("token");
-    setToken("");
-    navigate("/")
-
-  }
   const location = useLocation();
   const isActive = (path) => {
     return location.pathname === path;
   };
+
+  const handleLogout = () => {
+    logout();
+    navigate("/");
+  };
+
   return (
     <footer className="footer1 fixed-bottom">
       <nav className="">
@@ -63,7 +63,7 @@ function Footer({ setShowLogin }) {
           <ul className="nav-profile-dropdown">
             <li onClick={()=>navigate('/myorders')}><img src={assets.bag_icon} alt=""/><p className="">Orders</p></li>
             <hr/>
-            <li onClick={logout}><img src={assets.logout_icon} alt=""/><p className="t">Logout</p></li>
+            <li onClick={handleLogout}><img src={assets.logout_icon} alt=""/><p className="t">Logout</p></li>
           </ul>
           </Link>}
         
