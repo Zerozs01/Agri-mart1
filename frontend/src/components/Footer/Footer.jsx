@@ -31,10 +31,10 @@ function Footer({ setShowLogin }) {
         </Link>
 
         <Link
-          to="/Category0"
-          className={`fs-2 ${isActive("/Category0") ? " text-gradient" : ""}`}
+          to="/myorders"
+          className={`fs-2 ${isActive("/myorders") ? " text-gradient" : ""}`}
         >
-          <i className="bi bi-border-all fs-3"></i>
+          <i className ="bi bi-box-seam"></i>
         </Link>
 
         <Link
@@ -61,8 +61,7 @@ function Footer({ setShowLogin }) {
         </Link>:<Link className="navbar-profile">
           <img src={assets.profile_icon} alt=""/>
           <ul className="nav-profile-dropdown">
-            <li onClick={()=>navigate('/myorders')}><img src={assets.bag_icon} alt=""/><p className="">Orders</p></li>
-            <hr/>
+           
             <li onClick={handleLogout}><img src={assets.logout_icon} alt=""/><p className="t">Logout</p></li>
           </ul>
           </Link>}
